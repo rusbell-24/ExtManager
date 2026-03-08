@@ -149,20 +149,64 @@ const { extensions, filter, setExtensions, setFilter } = useExtensions();
 
 ## Scripts Disponibles
 
-| Script            | Descripción                   |
-| ----------------- | ----------------------------- |
-| `npm run dev`     | Inicia servidor de desarrollo |
-| `npm run build`   | Genera build de producción    |
-| `npm run preview` | Preview del build             |
-| `npm run lint`    | Ejecuta ESLint                |
+| Script              | Descripción                   |
+| ------------------- | ----------------------------- |
+| `npm run dev`       | Inicia servidor de desarrollo |
+| `npm run build`     | Genera build de producción    |
+| `npm run preview`   | Preview del build             |
+| `npm run lint`      | Ejecuta ESLint                |
+| `npm run predeploy` | Prepara build antes de deploy |
+| `npm run deploy`    | Despliega a GitHub Pages      |
+
+## Despliegue a GitHub Pages
+
+### Configuración Previa
+
+1. **Instalar gh-pages**
+
+```bash
+npm install --save-dev gh-pages
+```
+
+2. **Configurar package.json**
+
+Asegúrate de que tu `package.json` tenga la propiedad `homepage`:
+
+```json
+{
+  "homepage": "https://tu-usuario.github.io/ExtManager"
+}
+```
+
+### Despliegue
+
+Para desplegar la aplicación en GitHub Pages:
+
+```bash
+npm run deploy
+```
+
+Este comando ejecutará automáticamente:
+
+1. `predeploy`: Compila la app con `npm run build` generando la carpeta `dist`
+2. `deploy`: Sube el contenido de `dist` a la rama `gh-pages` en tu repositorio
+
+**Resultado**: Tu app estará disponible en `https://tu-usuario.github.io/ExtManager`
+
+### Configuración en GitHub
+
+1. Ve a tu repositorio en GitHub
+2. Settings → Pages
+3. Selecciona `gh-pages` como rama de deployment
+4. Espera a que se complete el despliegue
 
 ## Próximas Mejoras
 
-- [ ] Conectar con API real para persistencia de datos
-- [ ] Tests unitarios e integración
-- [ ] Animaciones y transiciones
-- [ ] Soporte para búsqueda
-- [ ] Ordenamiento de extensiones
+- Conectar con API real para persistencia de datos
+- Tests unitarios e integración
+- Animaciones y transiciones
+- Soporte para búsqueda
+- Ordenamiento de extensiones
 
 ## Licencia
 
